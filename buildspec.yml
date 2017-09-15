@@ -1,0 +1,13 @@
+
+version: 0.1
+phases:
+  build:
+    commands:
+      - echo Build started on `date`
+      - chmod +x ecs-deploy
+      - chmod +x jq-linux64
+      - ./ecs-deploy -c $ECS_CLUSTER -n $ECS_SERVICE -i $ECR_URL -t 300
+  post_build:
+    commands:
+      - echo Build completed on `date`
+
